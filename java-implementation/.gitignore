@@ -25,3 +25,7 @@ hs_err_pid*
 # IDE
 .idea
 *.iml
+
+# Project
+target/**
+*.txt
