@@ -29,3 +29,21 @@ hs_err_pid*
 # Project
 target/**
 *.txt
+
+# Java annotation processor (APT)
+.factorypath
+
+### Eclipse ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.classpath
+.project
