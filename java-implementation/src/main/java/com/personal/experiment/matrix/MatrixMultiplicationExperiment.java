@@ -44,6 +44,7 @@ public class MatrixMultiplicationExperiment {
     if (PRINT_RESULT) {
       MatrixGenerator.printMatrix(result);
     }
+    System.exit(0);
   }
 
 }
