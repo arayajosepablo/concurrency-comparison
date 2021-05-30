@@ -15,10 +15,9 @@ import java.util.stream.Stream;
 public class ArrayHandler {
 
   private static final String FILE_NAME = "arrayToSort.txt";
-  private static final int MAX_VALUE = 100;
 
   public static int[] generateArrayToSort(final int size, final int maxValue) {
-    Random random = new Random();
+    final Random random = new Random();
     final int[] array = IntStream.generate(() -> Math.abs(random.nextInt() % maxValue)).limit(size)
         .toArray();
 
@@ -27,7 +26,7 @@ public class ArrayHandler {
 
   public static void writeArrayToFile(final int sizeOfArray, final int maxValue) {
     try {
-      BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME));
+      final BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME));
       final int[] array = ArrayHandler.generateArrayToSort(sizeOfArray, maxValue);
       for (int i = 0; i < sizeOfArray; i++) {
         bw.write(array[i] + ((i == sizeOfArray - 1) ? "" : ","));

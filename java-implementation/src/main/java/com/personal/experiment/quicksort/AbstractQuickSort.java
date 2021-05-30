@@ -29,8 +29,4 @@ public abstract class AbstractQuickSort {
         sort(array, 0, array.length - 1);
     }
 
-    protected static int[] generateArray(int size, int maxValue) {
-        Random random = new Random();
-        return IntStream.generate(() -> Math.abs(random.nextInt() % maxValue)).limit(size).toArray();
-    }
 }
