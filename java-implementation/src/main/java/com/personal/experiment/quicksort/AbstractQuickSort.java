@@ -1,7 +1,6 @@
 package com.personal.experiment.quicksort;
 
-import java.util.Random;
-import java.util.stream.IntStream;
+// This implementation is based on https://github.com/cvbnnthc1/QuickSort
 
 public abstract class AbstractQuickSort {
 

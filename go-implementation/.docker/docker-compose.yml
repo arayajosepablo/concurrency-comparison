@@ -1,8 +1,0 @@
-version: "3.5"
-services:
-  app:
-    image: golang:1.16
-    volumes:
-      - ..:/go/src/app
-    command: >
-      sh -c "cd /go/src/app/ && go test -bench=."
