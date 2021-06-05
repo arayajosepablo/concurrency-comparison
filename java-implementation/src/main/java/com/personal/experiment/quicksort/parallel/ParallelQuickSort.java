@@ -94,8 +94,12 @@ public class ParallelQuickSort extends AbstractQuickSort {
     parallelQuickSort.sort(array, forkJoinPool);
     elapsedTime = System.currentTimeMillis() - elapsedTime;
 
-    if(PRINT_RESULT) {
+    if (PRINT_RESULT) {
       ArrayHandler.printArray(array);
+    }
+
+    if (!parallelQuickSort.isSorted(array)) {
+      System.out.println("The array is not sorted");
     }
 
     System.out.println(String
