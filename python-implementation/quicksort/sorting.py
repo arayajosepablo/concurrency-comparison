@@ -11,11 +11,12 @@ def main():
 
     # We want to sort the same list, so make a backup.
     lystbck = randomlist = random.sample(range(0, 10000000), 10000000)
+    print("Loading array in memory...")
     # lystbck = load_array_from_file("/Users/pablo/Documents/Ideas_para_paper-Concurrencia/Repositorios/concurrency-comparison/java-implementation/arrayToSort.txt")
-
-    print("List size: ", len(lystbck))
+    print("Array was loaded.")
 
     #Sequential quicksort a copy of the list.
+    print("About to do some sequencial sorting...")
     lyst = list(lystbck)            #copy the list
     start = time.time()             #start time
     lyst = quicksort(lyst)          #quicksort the list
@@ -30,6 +31,7 @@ def main():
     time.sleep(3)
     
     #Parallel quicksort.
+    print("About to do some parallel sorting...")
     lyst = list(lystbck)        
     
     start = time.time()
@@ -61,6 +63,7 @@ def main():
     time.sleep(3)
     
     #Built-in test.
+    print("About to do some built-it sorting...")
     lyst = list(lystbck)
     start = time.time()
     lyst = sorted(lyst)

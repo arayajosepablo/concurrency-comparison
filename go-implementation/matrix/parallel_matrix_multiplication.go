@@ -17,7 +17,7 @@ const processes = 8
 
 var wg sync.WaitGroup
 
-func new_matrix(r, c int) [][]int {
+func newMatrix(r, c int) [][]int {
 	a := make([]int, c*r)
 	m := make([][]int, r)
 	lo, hi := 0, c
@@ -28,8 +28,8 @@ func new_matrix(r, c int) [][]int {
 	return m
 }
 
-func load_matrix_from_file(matrix_path string) [][]int {
-	matrix := new_matrix(matrix_size, matrix_size)
+func loadMatrixFromFile(matrix_path string) [][]int {
+	matrix := newMatrix(matrix_size, matrix_size)
 
 	content, err := ioutil.ReadFile(matrix_path)
 
@@ -53,7 +53,7 @@ func load_matrix_from_file(matrix_path string) [][]int {
 
 }
 
-func print_matrix(matrix [][]int) {
+func printMatrix(matrix [][]int) {
 	if false {
 		for i := 0; i < matrix_size; i++ {
 			for j := 0; j < matrix_size; j++ {
@@ -65,8 +65,8 @@ func print_matrix(matrix [][]int) {
 	}
 }
 
-func sequential_matrix_multiplication(matrix_1, matrix_2 [][]int) [][]int {
-	matrix_result := new_matrix(matrix_size, matrix_size)
+func sequentialMatrixMultiplication(matrix_1, matrix_2 [][]int) [][]int {
+	matrix_result := newMatrix(matrix_size, matrix_size)
 
 	for i := 0; i < matrix_size; i++ {
 		for j := 0; j < matrix_size; j++ {
@@ -82,7 +82,7 @@ func sequential_matrix_multiplication(matrix_1, matrix_2 [][]int) [][]int {
 	return matrix_result
 }
 
-func parallel_multiply(matrix_1, matrix_2, multiplication_result [][]int, index int) {
+func parallelMultiply(matrix_1, matrix_2, multiplication_result [][]int, index int) {
 	for i := 0; i < matrix_size; i++ {
 		for j := 0; j < matrix_size; j++ {
 			multiplication_result[index][i] += matrix_1[index][j] * matrix_2[j][i]
@@ -90,7 +90,7 @@ func parallel_multiply(matrix_1, matrix_2, multiplication_result [][]int, index 
 	}
 }
 
-func parallel_work_handler(matrix_1, matrix_2, multiplication_result [][]int) {
+func parallelWorkHandler(matrix_1, matrix_2, multiplication_result [][]int) {
 	max_concurrent_goroutines := flag.Int("max_concurrent_goroutines", processes, "the number of goroutines that are allowed to run concurrently")
 	number_of_jobs := flag.Int("number_of_jobs", matrix_size, "the number of jobs that we need to do")
 	flag.Parse()
@@ -102,7 +102,7 @@ func parallel_work_handler(matrix_1, matrix_2, multiplication_result [][]int) {
 		go func(i int) {
 			defer wg.Done()
 			concurrentGoroutines <- struct{}{}
-			parallel_multiply(matrix_1, matrix_2, multiplication_result, i)
+			parallelMultiply(matrix_1, matrix_2, multiplication_result, i)
 			<-concurrentGoroutines
 
 		}(i)
@@ -111,7 +111,7 @@ func parallel_work_handler(matrix_1, matrix_2, multiplication_result [][]int) {
 
 }
 
-func parallel_work_handler_2(matrix_1, matrix_2, multiplication_result [][]int) {
+func parallelWorkHandler_2(matrix_1, matrix_2, multiplication_result [][]int) {
 	max_concurrent_goroutines := flag.Int("max_concurrent_goroutines", processes, "the number of goroutines that are allowed to run concurrently")
 	number_of_jobs := flag.Int("number_of_jobs", matrix_size, "the number of jobs that we need to do")
 	flag.Parse()
@@ -153,7 +153,7 @@ func parallel_work_handler_2(matrix_1, matrix_2, multiplication_result [][]int) 
 		// spot is available.
 		<-concurrentGoroutines
 		go func(id int) {
-			parallel_multiply(matrix_1, matrix_2, multiplication_result, id)
+			parallelMultiply(matrix_1, matrix_2, multiplication_result, id)
 			done <- true
 		}(i)
 	}
@@ -163,19 +163,19 @@ func parallel_work_handler_2(matrix_1, matrix_2, multiplication_result [][]int) 
 }
 
 func main() {
-	matrix_1 := load_matrix_from_file("/Users/pablo/Documents/Ideas_para_paper-Concurrencia/Repositorios/concurrency-comparison/java-implementation/matrix_0.txt")
-	matrix_2 := load_matrix_from_file("/Users/pablo/Documents/Ideas_para_paper-Concurrencia/Repositorios/concurrency-comparison/java-implementation/matrix_1.txt")
-	matrix_result := new_matrix(matrix_size, matrix_size)
+	matrix_1 := loadMatrixFromFile("/Users/pablo/Documents/Ideas_para_paper-Concurrencia/Repositorios/concurrency-comparison/java-implementation/matrix_0.txt")
+	matrix_2 := loadMatrixFromFile("/Users/pablo/Documents/Ideas_para_paper-Concurrencia/Repositorios/concurrency-comparison/java-implementation/matrix_1.txt")
+	matrix_result := newMatrix(matrix_size, matrix_size)
 
-	print_matrix(matrix_1)
-	print_matrix(matrix_2)
+	printMatrix(matrix_1)
+	printMatrix(matrix_2)
 
 	fmt.Println("About to do some math...")
 	start := time.Now()
-	parallel_work_handler_2(matrix_1, matrix_2, matrix_result)
+	parallelWorkHandler_2(matrix_1, matrix_2, matrix_result)
 	elapsed := time.Since(start)
 	fmt.Printf("Multiplication of %dx%d matrix: %d milliseconds", matrix_size, matrix_size, elapsed.Milliseconds())
 
-	print_matrix(matrix_result)
+	printMatrix(matrix_result)
 
 }
