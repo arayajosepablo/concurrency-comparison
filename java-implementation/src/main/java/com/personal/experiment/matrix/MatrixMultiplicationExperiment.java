@@ -31,9 +31,9 @@ public class MatrixMultiplicationExperiment {
     }
 
     final int matrix1[][] = MatrixFileReader
-        .readMatrixFromFile(0, ROWS_AND_COLUMNS, ROWS_AND_COLUMNS);
+        .readMatrixFromFile(0, ROWS_AND_COLUMNS, ROWS_AND_COLUMNS, "matrix_%s.txt");
     final int matrix2[][] = MatrixFileReader
-        .readMatrixFromFile(1, ROWS_AND_COLUMNS, ROWS_AND_COLUMNS);
+        .readMatrixFromFile(1, ROWS_AND_COLUMNS, ROWS_AND_COLUMNS, "matrix_%s.txt");
     final int result[][] = new int[matrix1.length][matrix2[0].length];
 
     Arrays.stream(result).forEach(r -> Arrays.fill(r, 0));

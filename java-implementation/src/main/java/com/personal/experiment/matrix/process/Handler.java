@@ -21,8 +21,7 @@ public class Handler {
 
     executorService.shutdown();
     try {
-      executorService.awaitTermination(60,
-          TimeUnit.SECONDS);
+      executorService.awaitTermination(60, TimeUnit.SECONDS);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
