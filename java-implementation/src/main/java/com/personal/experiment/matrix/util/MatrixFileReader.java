@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class MatrixFileReader {
 
   public static int[][] readMatrixFromFile(final int numberOfMatrix, final int rows,
-      final int columns) {
+      final int columns, final String fileName) {
     int[][] matrix = new int[rows][columns];
 
     try {
       final Scanner sc = new Scanner(
-          new BufferedReader(new FileReader(String.format("matrix_%s.txt", numberOfMatrix))));
+          new BufferedReader(new FileReader(String.format(fileName, numberOfMatrix))));
       while (sc.hasNextLine()) {
         for (int i = 0; i < matrix.length; i++) {
           String[] line = sc.nextLine().trim().split(",");
