@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ParallelGame {
 
-  private static final int NUMBER_OF_THREADS = 8;
+  private static final int NUMBER_OF_THREADS = 32;
 
   public void applyRulesInParallel(final int[][] world, final int[][] newWorld, final int n) {
     final ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -33,8 +33,8 @@ public class ParallelGame {
 
     final boolean printMatrix = true;
 
-    final int n = 7;
-    final int m = 80000;
+    final int n = 28;
+    final int m = 20000;
     final int[][] world = MatrixFileReader.readMatrixFromFile(1, n, n, "/Users/pablo/Documents/Ideas_para_paper-Concurrencia/Repositorios/concurrency-comparison/resources/infinite_growth_%s.txt");
     final int[][] newWorld = new int[n][n];
 

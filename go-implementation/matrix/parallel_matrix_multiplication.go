@@ -12,8 +12,8 @@ import (
 	"time"
 )
 
-const matrix_size = 500
-const processes = 8
+const matrix_size = 512
+const processes = 32
 
 var wg sync.WaitGroup
 
@@ -173,6 +173,8 @@ func main() {
 	fmt.Println("About to do some math...")
 	start := time.Now()
 	parallelWorkHandler_2(matrix_1, matrix_2, matrix_result)
+	//parallelWorkHandler(matrix_1, matrix_2, matrix_result)
+	//sequentialMatrixMultiplication(matrix_1, matrix_2)
 	elapsed := time.Since(start)
 	fmt.Printf("Multiplication of %dx%d matrix: %d milliseconds", matrix_size, matrix_size, elapsed.Milliseconds())
 

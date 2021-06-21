@@ -10,9 +10,9 @@ import csv
 def main():
 
     # We want to sort the same list, so make a backup.
-    lystbck = randomlist = random.sample(range(0, 10000000), 10000000)
+    # lystbck = randomlist = random.sample(range(0, 10000000), 10000000)
     print("Loading array in memory...")
-    # lystbck = load_array_from_file("/Users/pablo/Documents/Ideas_para_paper-Concurrencia/Repositorios/concurrency-comparison/java-implementation/arrayToSort.txt")
+    lystbck = load_array_from_file("/Users/pablo/Documents/Ideas_para_paper-Concurrencia/Repositorios/concurrency-comparison/java-implementation/arrayToSort.txt")
     print("Array was loaded.")
 
     #Sequential quicksort a copy of the list.
@@ -35,7 +35,7 @@ def main():
     lyst = list(lystbck)        
     
     start = time.time()
-    n = 8 
+    n = 16
 
     #Instantiate a Pipe so that we can receive the
     #process's response.

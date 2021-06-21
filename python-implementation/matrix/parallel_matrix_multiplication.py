@@ -46,8 +46,8 @@ def parallel_multiplication_without_thread_pool(matrix_1, matrix_2, multiplicati
 
 
 def main():
-    n = 500
-    max_workers = 8
+    n = 512
+    max_workers = 32
     matrix_1 = load_matrix_from_file('java-implementation/matrix_0.txt')
     matrix_2 = load_matrix_from_file('java-implementation/matrix_1.txt')
     multiplication_result = np.random.randint(0, 1, (n, n))

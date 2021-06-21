@@ -111,8 +111,8 @@ func applyRules(world [][]int, newWorld [][]int, n int) {
 }
 
 func main() {
-	n := 7
-	m := 800000
+	n := 28
+	m := 20000
 
 	world := loadMatrixFromFile("resources/infinite_growth_1.txt", n)
 	newWorld := newMatrix(n, n)
