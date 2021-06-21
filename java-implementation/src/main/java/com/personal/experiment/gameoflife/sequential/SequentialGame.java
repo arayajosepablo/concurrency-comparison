@@ -9,8 +9,8 @@ public class SequentialGame {
   public static void main(String[] args) {
     final boolean printMatrix = true;
 
-    final int n = 7;
-    final int m = 8000000;
+    final int n = 28;
+    final int m = 20000;
     final int[][] world = MatrixFileReader.readMatrixFromFile(1, n, n, "/Users/pablo/Documents/Ideas_para_paper-Concurrencia/Repositorios/concurrency-comparison/resources/infinite_growth_%s.txt");
     final int[][] newWorld = new int[n][n];
 

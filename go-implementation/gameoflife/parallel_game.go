@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-const processes = 8
+const processes = 32
 
 var wg sync.WaitGroup
 
@@ -141,8 +141,8 @@ func parallelWorkHandler(world [][]int, newWorld [][]int, n, index int) {
 }
 
 func main() {
-	n := 7
-	m := 800000
+	n := 28
+	m := 20000
 
 	world := loadMatrixFromFile("resources/infinite_growth_1.txt", n)
 	newWorld := newMatrix(n, n)
@@ -163,5 +163,5 @@ func main() {
 	fmt.Println("Last generation")
 	printMatrix(world, n)
 
-	fmt.Printf("Sequential game of life took: %d milliseconds", elapsed.Milliseconds())
+	fmt.Printf("Parallel game of life took: %d milliseconds", elapsed.Milliseconds())
 }

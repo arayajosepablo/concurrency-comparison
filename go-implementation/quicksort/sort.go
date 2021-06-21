@@ -12,7 +12,7 @@ import (
 )
 
 var concurrent_thread_count int32
-var _thread_amount int32 = 2
+var _thread_amount int32 = 32
 
 func ParallelQuicksort(arr *[]int, left, right int) {
 	var wg sync.WaitGroup

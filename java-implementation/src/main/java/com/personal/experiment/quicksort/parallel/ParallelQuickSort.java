@@ -12,7 +12,7 @@ public class ParallelQuickSort extends AbstractQuickSort {
 
   public static final int MAX_VALUE = 10000000;
 
-  private static final int NUMBER_OF_THREADS = 8;
+  private static final int NUMBER_OF_THREADS = 32;
 
   public static final boolean GENERATE_AND_SAVE_ARRAY = false;
 

@@ -68,8 +68,8 @@ def print_matrix(matrix):
 
 
 def main():
-    n = 7
-    m = 800000
+    n = 28
+    m = 20000
 
     world = load_matrix_from_file('resources/infinite_growth_1.txt')
     new_world = np.zeros((n, n)).astype(int)

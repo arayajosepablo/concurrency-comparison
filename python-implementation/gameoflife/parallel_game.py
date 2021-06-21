@@ -75,9 +75,9 @@ def print_matrix(matrix):
 
 
 def main():
-    max_workers = 8
-    n = 10
-    m = 10
+    max_workers = 32
+    n = 28
+    m = 20000
 
     world = load_matrix_from_file('resources/test_life_1.txt')
     new_world = np.zeros((n, n)).astype(int)
@@ -91,6 +91,6 @@ def main():
     
     print_matrix(world)
 
-    print(f"Sequential game of life took: {round(end - start, 5)} seconds")
+    print(f"Parallel game of life took: {round(end - start, 5)} seconds")
 
 main()
